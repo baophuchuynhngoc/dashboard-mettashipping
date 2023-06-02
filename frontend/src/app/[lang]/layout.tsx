@@ -33,7 +33,7 @@ async function getGlobal(): Promise<any> {
       "footer.footerLogo.logoImg",
       "footer.menuLinks",
       "footer.legalLinks",
-      "footer.socialLinks",
+      "footer.socialLinks.socialIcon",
       "footer.categories",
     ],
   };
@@ -87,18 +87,17 @@ export default async function RootLayout({
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
-          logoText={navbar.navbarLogo.logoText}
         />
 
-        <main className="dark:bg-black dark:text-gray-100 min-h-screen">
+        <main className="min-h-screen">
           {children}
         </main>
 
-        <Banner data={notificationBanner} />
+        {/* <Banner data={notificationBanner} /> */}
 
         <Footer
           logoUrl={footerLogoUrl}
-          logoText={footer.footerLogo.logoText}
+          // logoText={footer.footerLogo.logoText}
           menuLinks={footer.menuLinks}
           categoryLinks={footer.categories.data}
           legalLinks={footer.legalLinks}

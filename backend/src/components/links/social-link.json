@@ -14,18 +14,15 @@
       "type": "boolean",
       "default": false
     },
-    "text": {
-      "type": "string",
-      "required": true
-    },
-    "social": {
-      "type": "enumeration",
-      "enum": [
-        "YOUTUBE",
-        "TWITTER",
-        "DISCORD",
-        "WEBSITE"
-      ]
+    "socialIcon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
