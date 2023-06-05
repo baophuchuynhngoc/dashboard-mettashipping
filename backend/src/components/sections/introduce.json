@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_sections_introduces",
+  "info": {
+    "displayName": "Introduce"
+  },
+  "options": {},
+  "attributes": {
+    "imgBackground": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.button-link"
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "paragraph": {
+      "displayName": "Paragraph",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.paragraph"
+    }
+  }
+}

@@ -21,6 +21,17 @@ const populate = {
           },
         },
       },
+      imgBackground : {
+        fields:["url", "alternativeText", "caption", "width", "height"],
+      },
+      icon : {
+        fields:["url", "alternativeText", "caption", "width", "height"],
+      },
+      paragraph : {
+        populate: {
+          fields:["description"],
+        }
+      },
       testimonials: {
         populate: {
           picture: {

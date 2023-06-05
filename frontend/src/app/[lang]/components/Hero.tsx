@@ -35,7 +35,6 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url);
-  console.log(data.picture.data.attributes.url);
   return (
     <section className="bg-norepeat bg-center bg-cover" style={{
       backgroundImage: `url(${imgUrl})`
