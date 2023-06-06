@@ -19,6 +19,9 @@ const populate = {
           media: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
+          icon: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          },
         },
       },
       imgBackground : {
@@ -37,6 +40,7 @@ const populate = {
           picture: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
+          fields:["location","star"]
         },
       },
       plans: {
