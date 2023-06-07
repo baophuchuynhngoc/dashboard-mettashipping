@@ -47,15 +47,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const nextArrow = getStrapiMedia('/uploads/next-arrow.png');
   const prevArrow = getStrapiMedia('/uploads/prev-arrow.png');
   const star = getStrapiMedia('/uploads/star.png');
-  const displayStars = (num:number) => {
-    let stars = '';
   
-    for (let i = 0; i < num; i++) {
-      stars +=  <Image src={star || ""} alt="star" width={16} height={17} className="mx-[2px]" />
-    }
-  
-    return stars;
-  }
   const next = () => {
     slider.current?.slickNext();
   };
