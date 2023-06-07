@@ -40,7 +40,10 @@ const populate = {
           picture: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
-          fields:["location","star"]
+          fields:["location","star"],
+          icon: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          }
         },
       },
       plans: {

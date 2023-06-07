@@ -70,14 +70,14 @@ export default function Introduce ({ data }: IntroduceProps) {
                         </ul>
                 </div>
                 <div className="relative">
-                    <Image src={imgUrl} alt="" width={729} height={540} className="rounded-[12px] mt-[40px] w-full" />
+                    <Image src={imgUrl || ""} alt="" width={729} height={540} className="rounded-[12px] mt-[40px] w-full" />
                     <div className="absolute -bottom-[20px] left-0">
                         <div className="text-white py-[22px] px-[15px] bg-primary-brown rounded-[12px]">
                             <p className="text-[20px] lg:text-[40px] font-bold w-fit mx-auto">1245</p>
                             <p className="text-p lg:text-h4 w-fit">clients worldwide</p>
                         </div>
                     </div>
-                    <Image src={iconUrl} alt="" width={101} height={101} className="rounded-[12px] absolute bottom-[66px] -left-[50px]" />
+                    <Image src={iconUrl || ""} alt="" width={101} height={101} className="rounded-[12px] absolute bottom-[66px] -left-[50px]" />
                 </div>
                 </div>
 

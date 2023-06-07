@@ -18,15 +18,32 @@ interface Feature {
   newTab: boolean;
   url: string;
   text: string;
-  media:  string;
-  icon: string;
+  media:  {
+    data: {
+    id: string;
+      attributes: {
+        name: string;
+        alternativeText: string;
+        url: string;
+      };
+  }
+};
+  icon:  {
+    data: {
+    id: string;
+      attributes: {
+        name: string;
+        alternativeText: string;
+        url: string;
+      };
+  }
+};
   index: number;
 }
 
 function Feature({ title, description, media,icon,id,index}: Feature) {
   const imgUrl = getStrapiMedia(media?.data.attributes.url);
   const iconUrl = getStrapiMedia(icon?.data.attributes.url);
-  console.log(123123,index);
   return (
     <div className="flex flex-col lg:odd:flex-row lg:even:flex-row-reverse items-center justify-center lg:gap-[130px] mb-[40px] lg:mb-[138px] last:mb-0">
     <div className="flex flex-col p-4 flex-1">
@@ -36,11 +53,11 @@ function Feature({ title, description, media,icon,id,index}: Feature) {
       </div>
     </div>
     <div className="flex-1 relative">
-      <Image src={imgUrl} alt="" width="588" height="335" className="w-full aspect-[7/4] rounded-[12px] "/>
-      {0 === Number(index) && <Image src={iconUrl} alt="" width={122} height={122} className="object-cover absolute -bottom-[63px] -left-[63px] "/>}
-      {1 === Number(index) && <Image src={iconUrl} alt="" width={122} height={122} className="object-cover absolute -bottom-[63px] right-[46px] "/>}
-      {2 === Number(index) && <Image src={iconUrl} alt="" width={122} height={122} className="object-cover absolute -top-[60px] left-[57px] "/>}
-      {3 === Number(index) && <Image src={iconUrl} alt="" width={122} height={122} className="object-cover absolute top-[30%] -right-[60px] "/>}
+      <Image src={imgUrl || ""} alt="" width="588" height="335" className="w-full aspect-[7/4] rounded-[12px] "/>
+      {0 === Number(index) && <Image src={iconUrl || ""} alt="" width={122} height={122} className="object-cover absolute -bottom-[63px] -left-[63px] "/>}
+      {1 === Number(index) && <Image src={iconUrl || ""} alt="" width={122} height={122} className="object-cover absolute -bottom-[63px] right-[46px] "/>}
+      {2 === Number(index) && <Image src={iconUrl || ""} alt="" width={122} height={122} className="object-cover absolute -top-[60px] left-[57px] "/>}
+      {3 === Number(index) && <Image src={iconUrl || ""} alt="" width={122} height={122} className="object-cover absolute top-[30%] -right-[60px] "/>}
     </div>
     </div>
   );

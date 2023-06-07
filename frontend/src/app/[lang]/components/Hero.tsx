@@ -44,7 +44,7 @@ export default function Hero({ data }: HeroProps) {
           <HighlightedText
             text={data.title}
             tag="h1"
-            className="text-h1 text-white font-bold leading-none leading-[81.5px] mb-8"
+            className="lg:text-h1 text-h2 text-white font-bold leading-[81.5px] mb-8"
           />
 
           <HighlightedText
