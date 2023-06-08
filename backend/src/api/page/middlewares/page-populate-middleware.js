@@ -22,6 +22,9 @@ const populate = {
           icon: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
+          backgroundImage: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          }
         },
       },
       imgBackground : {

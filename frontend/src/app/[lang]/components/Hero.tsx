@@ -36,9 +36,12 @@ interface HeroProps {
 export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url);
   return (
-    <section className="bg-norepeat bg-center bg-cover" style={{
-      backgroundImage: `url(${imgUrl})`
-    }}>
+    <section
+      className="bg-norepeat bg-center bg-cover"
+      style={{
+        backgroundImage: `url(${imgUrl})`,
+      }}
+    >
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
           <HighlightedText

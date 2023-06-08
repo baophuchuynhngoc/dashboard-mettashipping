@@ -35,11 +35,11 @@ export default function Navbar({
   links: Array<NavLink>;
   logoUrl: string | null;
 }) {
-  const [isOpen,setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="p-4">
       <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
@@ -52,10 +52,15 @@ export default function Navbar({
             ))}
           </ul>
           <div className="hidden lg:flex items-center text-ex font-medium	">
-              <Link href="/" className="text-primary-blue mx-4 -mb-1">Sign in</Link>
-              <Link href="/" className="text-white bg-primary-blue rounded-[39px] -mb-1">
-                <p className="px-[21px] py-[7px]">Sign up</p>
-              </Link>
+            <Link href="/" className="text-primary-blue mx-4 -mb-1">
+              Sign in
+            </Link>
+            <Link
+              href="/"
+              className="text-white bg-primary-blue rounded-[39px] -mb-1"
+            >
+              <p className="px-[21px] py-[7px]">Sign up</p>
+            </Link>
           </div>
         </div>
 
@@ -76,21 +81,26 @@ export default function Navbar({
           </svg>
         </button>
       </div>
-        {isOpen && (
-        <div className="bg-white h-[100vh] z-10 mt-4">
+      {isOpen && (
+        <div className="bg-white h-[100vh] z-10 mt-4 transition-all	">
           <ul className="grid text-ex font-medium	">
             {links.map((item: NavLink) => (
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
           <div className="flex items-center text-ex font-medium	">
-              <Link href="/" className="text-primary-blue mx-4">Sign in</Link>
-              <Link href="/" className="text-white bg-primary-blue rounded-[39px]">
-                <p className="px-[21px] py-[7px]">Sign up</p>
-              </Link>
+            <Link href="/" className="text-primary-blue mx-4">
+              Sign in
+            </Link>
+            <Link
+              href="/"
+              className="text-white bg-primary-blue rounded-[39px]"
+            >
+              <p className="px-[21px] py-[7px]">Sign up</p>
+            </Link>
           </div>
-          </div>
-          )}
+        </div>
+      )}
     </div>
   );
 }

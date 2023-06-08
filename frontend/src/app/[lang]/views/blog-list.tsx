@@ -51,7 +51,7 @@ export default function PostList({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="container p-6 mx-auto space-y-6 sm:space-y-12">
+    <section className="container p-6 mx-auto space-y-6 sm:space-y-12 ">
       <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => {
           const imageUrl = getStrapiMedia(
@@ -69,14 +69,14 @@ export default function PostList({
             <Link
               href={`blog/${category?.slug}/${article.attributes.slug}`}
               key={article.id}
-              className="max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
+              className="bg-white max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
             >
               {imageUrl && (
                 <Image
                   alt="presentation"
                   width="371"
                   height="200"
-                  className="object-cover w-full  "
+                  className="object-cover w-full h-[200px] "
                   src={imageUrl}
                 />
               )}
@@ -86,7 +86,7 @@ export default function PostList({
                   {article.attributes.title}
                 </h3>
 
-                <p className="py-4">{article.attributes.description}</p>
+                <p className="py-4 font-light">{article.attributes.description}</p>
               </div>
             </Link>
           );
