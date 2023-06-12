@@ -2,6 +2,7 @@
 import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 interface NavLink {
   id: number;
@@ -17,8 +18,8 @@ function NavLink({ url, text }: NavLink) {
     <li className="flex">
       <Link
         href={url}
-        className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${
-          path === url && "dark:text-violet-400 dark:border-violet-400"
+        className={`flex items-center mx-4 mb-4 lg:-mb-1  hover:text-primary-blue ${
+          path === url && " text-primary-blue"
         }}`}
       >
         {text}
@@ -30,34 +31,46 @@ function NavLink({ url, text }: NavLink) {
 export default function Navbar({
   links,
   logoUrl,
-  logoText,
 }: {
   links: Array<NavLink>;
   logoUrl: string | null;
-  logoText: string | null;
 }) {
-  return (
-    <div className="p-4 dark:bg-black dark:text-gray-100">
-      <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
-        <Logo src={logoUrl}>
-          {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
-        </Logo>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <div className="items-center flex-shrink-0 hidden lg:flex">
-          <ul className="items-stretch hidden space-x-3 lg:flex">
+  const handleOpenMenu = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <div className="p-4">
+      <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
+        <Logo src={logoUrl} />
+
+        <div className="items-center flex-shrink-0 hidden lg:flex justify-between">
+          <ul className="items-stretch hidden lg:flex text-ex font-medium	">
             {links.map((item: NavLink) => (
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
+          <div className="hidden lg:flex items-center text-ex font-medium	">
+            <Link href="/" className="text-primary-blue mx-4 -mb-1">
+              Sign in
+            </Link>
+            <Link
+              href="/"
+              className="text-white bg-primary-blue rounded-[39px] -mb-1"
+            >
+              <p className="px-[21px] py-[7px]">Sign up</p>
+            </Link>
+          </div>
         </div>
 
-        <button className="p-4 lg:hidden">
+        <button className="p-4 lg:hidden" onClick={handleOpenMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-6 h-6 dark:text-gray-100"
+            className="w-6 h-6 "
           >
             <path
               strokeLinecap="round"
@@ -68,6 +81,26 @@ export default function Navbar({
           </svg>
         </button>
       </div>
+      {isOpen && (
+        <div className="bg-white h-[100vh] z-10 mt-4 transition-all	">
+          <ul className="grid text-ex font-medium	">
+            {links.map((item: NavLink) => (
+              <NavLink key={item.id} {...item} />
+            ))}
+          </ul>
+          <div className="flex items-center text-ex font-medium	">
+            <Link href="/" className="text-primary-blue mx-4">
+              Sign in
+            </Link>
+            <Link
+              href="/"
+              className="text-white bg-primary-blue rounded-[39px]"
+            >
+              <p className="px-[21px] py-[7px]">Sign up</p>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_layout_news",
+  "info": {
+    "displayName": "News",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  }
+}

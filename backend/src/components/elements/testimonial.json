@@ -23,6 +23,14 @@
     "authorName": {
       "type": "string",
       "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "star": {
+      "type": "integer",
+      "min": 0,
+      "max": 5
     }
   }
 }

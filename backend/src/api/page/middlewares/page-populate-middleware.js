@@ -19,13 +19,34 @@ const populate = {
           media: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
+          icon: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          },
+          backgroundImage: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          }
         },
+      },
+      imgBackground : {
+        fields:["url", "alternativeText", "caption", "width", "height"],
+      },
+      icon : {
+        fields:["url", "alternativeText", "caption", "width", "height"],
+      },
+      paragraph : {
+        populate: {
+          fields:["description"],
+        }
       },
       testimonials: {
         populate: {
           picture: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
+          fields:["location","star"],
+          icon: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          }
         },
       },
       plans: {

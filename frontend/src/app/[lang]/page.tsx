@@ -1,11 +1,12 @@
 import LangRedirect from './components/LangRedirect';
 import { fetchAPI } from './utils/fetch-api';
 import { sectionRenderer } from './utils/section-renderer';
-
+import  "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 async function getPageBySlug(slug: string, lang: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = `/pages`;
-    const urlParamsObject = { filters: { slug }, locale: lang };
+    const urlParamsObject = { filters: { slug }, locale: lang};
     const options = { headers: { Authorization: `Bearer ${token}` } };
     const response = await fetchAPI(path, urlParamsObject, options);
     return response;

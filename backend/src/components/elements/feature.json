@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elements_features",
   "info": {
-    "displayName": "Feature"
+    "displayName": "Feature",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,6 +13,28 @@
       "type": "text"
     },
     "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "backgroundImage": {
       "allowedTypes": [
         "images",
         "files",
@@ -20,20 +43,6 @@
       ],
       "type": "media",
       "multiple": false
-    },
-    "showLink": {
-      "type": "boolean",
-      "default": false
-    },
-    "newTab": {
-      "type": "boolean",
-      "default": false
-    },
-    "url": {
-      "type": "string"
-    },
-    "text": {
-      "type": "string"
     }
   }
 }

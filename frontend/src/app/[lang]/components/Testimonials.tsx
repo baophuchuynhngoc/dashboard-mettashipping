@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import { getStrapiMedia } from "../utils/api-helpers";
-
+import Slider from "react-slick";
+import { useEffect, useRef, useState } from "react";
 interface Testimonial {
   text: string;
   authorName: string;
@@ -14,6 +16,19 @@ interface Testimonial {
       };
     };
   };
+  location: string;
+  star: number;
+}
+
+interface Icon {
+  data: {
+    id: string;
+    attributes: {
+      name: string;
+      alternativeText: string;
+      url: string;
+    };
+  };
 }
 
 interface TestimonialsProps {
@@ -22,64 +37,112 @@ interface TestimonialsProps {
     title: string;
     description: string;
     testimonials: Testimonial[];
+    icon: Icon;
   };
 }
 
-function Testimonial({ text, authorName, picture }: Testimonial) {
-  const imageUrl = getStrapiMedia(picture.data.attributes.url);
+export default function Testimonials({ data }: TestimonialsProps) {
+  const slider = useRef<any>({});
+  const iconUrl = getStrapiMedia(data.icon.data.attributes.url);
+  const nextArrow = getStrapiMedia("/uploads/next-arrow.png");
+  const prevArrow = getStrapiMedia("/uploads/prev-arrow.png");
+  const star = getStrapiMedia("/uploads/star.png");
+  const backgroundImage = getStrapiMedia("/uploads/Eclipse.png");
+
+  const next = () => {
+    slider.current?.slickNext();
+  };
+  const previous = () => {
+    slider.current?.slickPrev();
+  };
+  const settings = {
+    dots: false,
+    arrows: false,
+    autoplay: true,
+    swipe: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
-    <div className="flex flex-col items-center mx-12 lg:mx-0">
-      <div className="flex items-center">
-        <div className="my-6">
+    <section className="bg-no-repeat bg-[length:900px_800px]" style={{backgroundImage: `url(${backgroundImage})`,backgroundPosition:"150%"}}>
+      <div className="container p-0 relative">
+        <div className="absolute top-[45%] hidden lg:flex flex-row z-10 justify-between w-full">
           <Image
-            src={imageUrl || ""}
-            alt={picture.data.attributes.alternativeText || "none provided"}
-            className="inline-block h-32 w-32 rounded-full"
-            width={200}
-            height={200}
+            src={prevArrow || ""}
+            alt="next-arrow"
+            width={62}
+            height={62}
+            onClick={previous}
+            className="cursor-pointer"
+          />
+          <Image
+            src={nextArrow || ""}
+            alt="next-arrow"
+            width={62}
+            height={62}
+            onClick={next}
+            className="cursor-pointer"
           />
         </div>
-      </div>
-      <div className="relative text-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-          fill="currentColor"
-          className="absolute top-0 left-0 w-8 h-8 dark:text-gray-700"
-        >
-          <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-          <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-        </svg>
-        <p className="px-6 py-1 text-lg italic">{text}</p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-          fill="currentColor"
-          className="absolute bottom-0 right-0 w-8 h-8 dark:text-gray-700"
-        >
-          <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-          <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-        </svg>
-      </div>
-      <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
-      <p>{authorName}</p>
-    </div>
-  );
-}
+        <Slider ref={slider} {...settings}>
+          {data.testimonials.map((testimonial, index) => {
+            const imageUrl = getStrapiMedia(
+              testimonial.picture.data.attributes.url
+            );
+            return (
+              <div className="m:py-12 lg:py-24">
+                <div className="mb-[16px] mx-auto w-fit">
+                  <Image
+                    src={imageUrl || ""}
+                    alt={
+                      testimonial.picture.data.attributes.alternativeText ||
+                      "none provided"
+                    }
+                    className="inline-block object-cover rounded-full"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+                <div key={index}>
+                  <div className="mx-auto w-fit mb-[20px] text-center">
+                    <p className="text-[#1C2869]">{testimonial.authorName}</p>
+                    <p className="pb-[16px] font-light">{testimonial.location}</p>
+                    <div className="flex items-center justify-center">
+                      {Array.from(Array(testimonial.star), (_, index) => (
+                        <Image
+                          src={star || ""}
+                          alt="star"
+                          width={16}
+                          height={17}
+                          className="mx-[2px]"
+                          key={index}
+                        />
+                      ))}
+                    </div>
+                  </div>
 
-export default function Testimonials({ data }: TestimonialsProps) {
-  return (
-    <section className="dark:bg-black dark:text-gray-100  m:py-12 lg:py-24">
-      <div className="container mx-auto py-4 space-y-2 text-center">
-        <h1 className="text-4xl font-semibold leading-none text-center">
-          {data.title}
-        </h1>
-        <p className="mt-4 text-lg text-center">{data.description}</p>
-      </div>
-      <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-2">
-        {data.testimonials.map((testimonial: Testimonial, index: number) => (
-          <Testimonial key={index} {...testimonial} />
-        ))}
+                  <div className=" text-center">
+                    <div className="bg-[#F6FCFF] rounded-[40px] relative lg:w-3/4 mx-auto">
+                      <Image
+                        src={iconUrl || ""}
+                        alt="quotes"
+                        width={80}
+                        height={72}
+                        className="absolute -top-[42px] left-0"
+                      />
+                      <p className="p-[40px] text-p font-light">
+                        {testimonial.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </Slider>
       </div>
     </section>
   );
