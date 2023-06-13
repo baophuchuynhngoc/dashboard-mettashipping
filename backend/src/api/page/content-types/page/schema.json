@@ -52,7 +52,8 @@
         "sections.heading",
         "sections.introduce",
         "sections.news",
-        "sections.contact-form"
+        "sections.contact-form",
+        "sections.request-a-rate"
       ],
       "pluginOptions": {
         "i18n": {
