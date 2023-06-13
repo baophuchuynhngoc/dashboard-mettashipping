@@ -5,6 +5,7 @@ import Pricing from "../components/Pricing";
 import Email from "../components/Email";
 import Introduce from "../components/Introduce";
 import Article from "../components/Article";
+import ContactForm from "../components/ContactForm";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -18,6 +19,8 @@ export function sectionRenderer(section: any, index: number) {
       return <Article key={index} data={section} />;
     case "sections.testimonials-group":
       return <Testimonials key={index} data={section} />;
+      case "sections.contact-form":
+        return <ContactForm key={index} data={section} />;
     default:
       return null;
   }

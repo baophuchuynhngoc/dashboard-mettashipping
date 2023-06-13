@@ -51,7 +51,8 @@
         "sections.features",
         "sections.heading",
         "sections.introduce",
-        "sections.news"
+        "sections.news",
+        "sections.contact-form"
       ],
       "pluginOptions": {
         "i18n": {

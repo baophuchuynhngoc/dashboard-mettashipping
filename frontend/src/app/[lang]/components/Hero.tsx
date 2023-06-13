@@ -1,8 +1,10 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
 import HighlightedText from "./HighlightedText";
 import { getStrapiMedia } from "../utils/api-helpers";
 import { renderButtonStyle } from "../utils/render-button-style";
+import { usePathname } from "next/navigation";
 
 interface Button {
   id: string;
@@ -35,13 +37,14 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url);
+  const path = usePathname();
   return (
     <section
       className="bg-norepeat bg-center bg-cover"
       style={{
         backgroundImage: `url(${imgUrl})`,
       }}
-    >
+    >{path === "/en" ? (
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-lg lg:max-w-md xl:max-w-lg lg:text-left">
           <HighlightedText
@@ -68,7 +71,20 @@ export default function Hero({ data }: HeroProps) {
             ))}
           </div>
         </div>
-      </div>
+      </div>) : (
+        <div className="container m:pb-12 lg:pb-24">
+          <HighlightedText
+            text="Home > Contact us"
+            tag="p"
+            className="lg:text-ex text-ex text-white font-light leading-[81.5px] mb-[45px]"
+          />
+          <HighlightedText
+            text={data.title}
+            tag="h1"
+            className="lg:text-h1 text-h2 text-white font-bold leading-[81.5px] mb-[45px]"
+          />
+        </div>
+      )}
     </section>
   );
 }
