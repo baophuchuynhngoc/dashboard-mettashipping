@@ -1,50 +1,24 @@
-import classNames from "classnames";
+"use client";
 
-function colors(type: string) {
-  switch (type) {
-    case "info":
-      return "bg-violet-400";
-    case "warning":
-      return "bg-yellow-500";
-    case "alert":
-      return "bg-pink-500";
-    default:
-      return "bg-gray-900";
-  }
-}
+import { getStrapiMedia } from "../utils/api-helpers";
+import HighlightedText from "./HighlightedText";
 
-interface BannerProps {
-  data: {
-    heading: string;
-    text: string;
-    type: string;
-    link: {
-      id: number;
-      url: string;
-      newTab: boolean;
-      text: string;
-    };
-  } | null;
-}
-
-export default function Banner({ data }: BannerProps) {
-  if (!data) return null;
-  const { heading, text, type, link } = data;
+export default function Banner({ data }: any) {
+  const imgBackgroundUrl = getStrapiMedia(
+    data?.imgBackground?.data?.attributes?.url
+  );
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8">
-      <div
-        className={classNames(
-          "pointer-events-auto flex items-center justify-between gap-x-6 py-2.5 px-6 sm:rounded-xl sm:py-3 sm:pr-3.5 sm:pl-4",
-          colors(type)
-        )}
-      >
-        <p className="text-sm leading-6 text-white">
-          <a href={link.url} target={link.newTab ? "_blank" : "_self"}>
-            <strong className="font-semibold">{heading}</strong> {text}&nbsp;
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </p>
+    <section
+      className="bg-no-repeat bg-center bg-cover"
+      style={{ backgroundImage: `url(${imgBackgroundUrl})` }}
+    >
+      <div className="container pt-[141px] pb-[236px]">
+        <HighlightedText
+          text={data.title}
+          tag="h2"
+          className="text-h2 text-white font-bold leading-[72px]  mb-[15px]"
+        />
       </div>
-    </div>
+    </section>
   );
 }
