@@ -5,6 +5,10 @@ import { fetchAPI } from "../utils/fetch-api";
 import Loader from "../components/Loader";
 import Blog from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
+import HotTopic from "../components/HotTopic";
+import Hero from "../components/Hero";
+import HighlightedText from "../components/HighlightedText";
+import BlogList from "../components/BlogList";
 
 interface Meta {
   pagination: {
@@ -18,6 +22,7 @@ export default function Profile() {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
+  const [heroData, setHeroData] = useState<any>([]);
 
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
@@ -38,13 +43,16 @@ export default function Profile() {
           limit: limit,
         },
       };
+      const heroPath = `/pages`;
+      const heroUrlParamsObject = { filters: { slug: 'blog' }, locale: 'en'}
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
-
+      const heroResponseData = await fetchAPI(heroPath,heroUrlParamsObject,options)
       if (start === 0) {
         setData(responseData.data);
+        setHeroData(heroResponseData?.data[0]?.attributes?.contentSections)
       } else {
-        setData((prevData: any[] ) => [...prevData, ...responseData.data]);
+        setData((prevData: any[]) => [...prevData, ...responseData.data]);
       }
 
       setMeta(responseData.meta);
@@ -61,28 +69,17 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    fetchData(0, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
+    fetchData(0, 100);
   }, [fetchData]);
 
   if (isLoading) return <Loader />;
-
   return (
     <div>
-      <PageHeader heading="Our Blog" text="Checkout Something Cool" />
-      <Blog data={data}>
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-              onClick={loadMorePosts}
-            >
-              Load more posts...
-            </button>
-          </div>
-        )}
-      </Blog>
+      <Hero data={heroData[0]} />
+      <HotTopic data={data} />
+      <BlogList data={data} title="Latest News" />
+      <BlogList data={data} title="News" />
+      <BlogList data={data} title="Bussiness News" />
     </div>
   );
 }
