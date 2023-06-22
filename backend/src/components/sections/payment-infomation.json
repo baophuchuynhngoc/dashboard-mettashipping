@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_payment_infomations",
+  "info": {
+    "displayName": "Payment Information",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "table": {
+      "displayName": "table",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.table"
+    },
+    "paymentMethod": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.payment-method"
+    },
+    "imgBackground": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

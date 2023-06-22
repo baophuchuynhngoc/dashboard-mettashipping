@@ -19,8 +19,8 @@ function NavLink({ url, text }: NavLink) {
       <Link
         href={url}
         className={`flex items-center mx-4 mb-4 lg:-mb-1  hover:text-primary-blue ${
-          path === url && " text-primary-blue"
-        }}`}
+          path ===  `/en${url?.length === 1 ? "": url}` && " font-semibold text-primary-blue"
+        }`}
       >
         {text}
       </Link>
@@ -51,17 +51,6 @@ export default function Navbar({
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
-          <div className="hidden lg:flex items-center text-ex font-medium	">
-            <Link href="/" className="text-primary-blue mx-4 -mb-1">
-              Sign in
-            </Link>
-            <Link
-              href="/"
-              className="text-white bg-primary-blue rounded-[39px] -mb-1"
-            >
-              <p className="px-[21px] py-[7px]">Sign up</p>
-            </Link>
-          </div>
         </div>
 
         <button className="p-4 lg:hidden" onClick={handleOpenMenu}>
@@ -88,17 +77,6 @@ export default function Navbar({
               <NavLink key={item.id} {...item} />
             ))}
           </ul>
-          <div className="flex items-center text-ex font-medium	">
-            <Link href="/" className="text-primary-blue mx-4">
-              Sign in
-            </Link>
-            <Link
-              href="/"
-              className="text-white bg-primary-blue rounded-[39px]"
-            >
-              <p className="px-[21px] py-[7px]">Sign up</p>
-            </Link>
-          </div>
         </div>
       )}
     </div>
