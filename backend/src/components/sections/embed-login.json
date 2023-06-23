@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_embed_logins",
+  "info": {
+    "displayName": "Embed Login"
+  },
+  "options": {},
+  "attributes": {
+    "linkUrl": {
+      "type": "string"
+    }
+  }
+}

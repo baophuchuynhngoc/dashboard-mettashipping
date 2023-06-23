@@ -8,6 +8,8 @@ import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { Providers } from "./provider";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const FALLBACK_SEO = {
   title: "Strapi Starter Next Blog",
@@ -103,6 +105,7 @@ export default async function RootLayout({
           legalLinks={footer.legalLinks}
           socialLinks={footer.socialLinks}
         />
+        <ToastContainer />
         </Providers>
       </body>
     </html>
