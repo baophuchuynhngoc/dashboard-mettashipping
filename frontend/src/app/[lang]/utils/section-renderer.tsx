@@ -9,6 +9,8 @@ import ContactForm from "../components/ContactForm";
 import RequestARate from "../components/RequestARate";
 import TheyChooseUs from "../components/TheyChooseUs";
 import Banner from "../components/Banner";
+import PaymentInfomation from "../components/PaymentInfomation";
+import EmbedLogin from "../components/EmbedLogin";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -30,6 +32,10 @@ export function sectionRenderer(section: any, index: number) {
       return <TheyChooseUs key={index} data={section} />;
     case "sections.banner":
       return <Banner key={index} data={section} />;
+    case "sections.payment-infomation":
+      return <PaymentInfomation key={index} data={section} />;
+    case "sections.embed-login":
+      return <EmbedLogin key={index} data={section} />;
     default:
       return null;
   }

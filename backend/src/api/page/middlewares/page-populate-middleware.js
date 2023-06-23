@@ -24,29 +24,42 @@ const populate = {
           },
           backgroundImage: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
-          }
+          },
         },
       },
-      imgBackground : {
-        fields:["url", "alternativeText", "caption", "width", "height"],
+      imgBackground: {
+        fields: ["url", "alternativeText", "caption", "width", "height"],
       },
-      icon : {
-        fields:["url", "alternativeText", "caption", "width", "height"],
+      icon: {
+        fields: ["url", "alternativeText", "caption", "width", "height"],
       },
-      paragraph : {
+      paragraph: {
         populate: {
-          fields:["description"],
-        }
+          fields: ["description"],
+        },
       },
       testimonials: {
         populate: {
           picture: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
           },
-          fields:["location","star"],
+          fields: ["location", "star"],
           icon: {
             fields: ["url", "alternativeText", "caption", "width", "height"],
-          }
+          },
+        },
+      },
+      table: {
+        populate: {
+          fields: ["title", "processingTime", "paidFeatures"],
+        },
+      },
+      paymentMethod: {
+        populate: {
+          fields: ["title", "description","picture"],
+          picture: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          },
         },
       },
       plans: {

@@ -55,7 +55,9 @@
         "sections.contact-form",
         "sections.request-a-rate",
         "sections.choose-us",
-        "sections.banner"
+        "sections.banner",
+        "sections.payment-infomation",
+        "sections.embed-login"
       ],
       "pluginOptions": {
         "i18n": {
