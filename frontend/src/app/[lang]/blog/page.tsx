@@ -24,7 +24,7 @@ export default function Profile() {
   const [isLoading, setLoading] = useState(true);
   const [heroData, setHeroData] = useState<any>([]);
 
-  const fetchData = useCallback(async (start: number, limit: number) => {
+  const fetchData = useCallback(async (start: number) => {
     setLoading(true);
     try {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -37,10 +37,6 @@ export default function Profile() {
           authorsBio: {
             populate: "*",
           },
-        },
-        pagination: {
-          start: start,
-          limit: limit,
         },
       };
       const heroPath = `/pages`;
@@ -65,11 +61,11 @@ export default function Profile() {
 
   function loadMorePosts(): void {
     const nextPosts = meta!.pagination.start + meta!.pagination.limit;
-    fetchData(nextPosts, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
+    fetchData(nextPosts);
   }
 
   useEffect(() => {
-    fetchData(0, 100);
+    fetchData(0);
   }, [fetchData]);
 
   if (isLoading) return <Loader />;
