@@ -26,7 +26,6 @@ export default function BlogList({ data, title }: any) {
       setEnd(end + Number(skip));
     }
   };
-  console.log(start, end, totalPage * Number(skip));
   return (
     <section className="container p-6 mx-auto space-y-6 sm:space-y-12 ">
       {title === "News" ? (

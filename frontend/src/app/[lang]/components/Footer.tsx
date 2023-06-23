@@ -10,8 +10,9 @@ import {
   AiFillYoutube,
 } from "react-icons/ai";
 import Image from "next/image";
-import { getStrapiMedia } from "../utils/api-helpers";
-
+import { getStrapiMedia, getStrapiURL } from "../utils/api-helpers";
+import { useState } from "react";
+import { toast } from "react-toastify";
 interface FooterLink {
   id: number;
   url: string;
@@ -81,11 +82,48 @@ export default function Footer({
   legalLinks: Array<FooterLink>;
   socialLinks: Array<FooterLink>;
 }) {
+  const [email, setEmail] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  async function handleSubmit(e:any) {
+    e.preventDefault();
+    if (email === "") {
+      setErrorMessage("Email cannot be blank.");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Invalid email format.");
+      return;
+    }
+
+    const res = await fetch(getStrapiURL() + "/api/lead-form-submissions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ data: { email } }),
+    });
+
+    if (!res.ok) {
+      setErrorMessage("Email failed to submit.");
+      return;
+    }
+    setErrorMessage("");
+    setSuccessMessage("Email successfully submitted!");
+    toast["success"]("Thanks for subscribing to us");
+    setEmail("");
+  }
   return (
     <footer className="py-6">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid grid-cols-12">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-6  md:block md:justify-start">
+          <div className="pb-6 col-span-12 lg:col-span-6 md:pb-0  md:block lg:justify-start">
             <div className="flex justify-center lg:block lg:justify-start">
               <Logo src={logoUrl} />
             </div>
@@ -113,24 +151,26 @@ export default function Footer({
           </div>
 
           <div className="col-span-12 lg:col-span-6 my-auto">
-            <ul className="items-stretch justify-center lg:flex text-ex font-medium mb-[33px]">
+            <ul className="items-stretch justify-center lg:flex text-ex font-medium mb-[33px] whitespace-nowrap">
               {menuLinks.map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
-            <div className="block lg:flex items-center text-center justify-center lg:justify-end">
+            <form className="block lg:flex items-center text-center justify-center lg:justify-end">
               <p className="font-light mb-4 lg:mb-0 mr-[28px] ">
                 Follow our news
               </p>
               <input
                 type="email"
+                placeholder={errorMessage || "Address e-mail"}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 className="bg-[#F5F5F5] w-2/5 p-3 rounded-[5px]"
-                placeholder="Address e-mail"
               />
-              <button className="p-3 font-medium rounded-[5px] text-white text-ex bg-primary-blue mx-4 lg:mx-[35px]">
+              <button className="p-3 font-medium rounded-[5px] text-white text-ex bg-primary-blue mx-4 lg:mx-[35px]" onClick={handleSubmit}>
                 Submit
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <div className="grid justify-center pt-6 font-light">

@@ -75,16 +75,16 @@ export default async function LayoutRoute({
   const { categories, articles } = (await fetchSideMenuData(category)) as Data;
 
   return (
-    <section className="container p-8 mx-auto space-y-6 sm:space-y-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
-        <div className="col-span-2">{children}</div>
-        <aside>
+    <section className="">
+      <div className="">
+        <div className="">{children}</div>
+        {/* <aside>
           <ArticleSelect
             categories={categories}
             articles={articles}
             params={params}
           />
-        </aside>
+        </aside> */}
       </div>
     </section>
   );
