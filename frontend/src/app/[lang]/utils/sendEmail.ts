@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 
-type DataType = {
-  email: string;
-  name?: string;
-};
+// type DataType = {
+//   email: string;
+//   name?: string;
+// };
 
-const sendEmail = async (data: DataType) => {
+const sendEmail = async (data: any, subject:string, text:string) => {
   const {
     email: fromEmail,
     name,
@@ -25,10 +25,8 @@ const sendEmail = async (data: DataType) => {
   const msg = {
     from: fromEmail,
     to: userEmail,
-    subject: "MettaShipping: You have a new message.",
-    text: `
-     ${name} have sent you a testimonial
-    `,
+    subject: subject,
+    text: text,
   };
 
   try {

@@ -4,7 +4,7 @@ import sendEmail from "../../utils/sendEmail";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const data = await sendEmail(body.data);
+    const data = await sendEmail(body.data,body.subject,body.text);
 
     return NextResponse.json(data);
   } catch (error: any) {
