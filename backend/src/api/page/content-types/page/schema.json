@@ -57,7 +57,8 @@
         "sections.choose-us",
         "sections.banner",
         "sections.payment-infomation",
-        "sections.embed-login"
+        "sections.embed-login",
+        "sections.testimonial"
       ],
       "pluginOptions": {
         "i18n": {

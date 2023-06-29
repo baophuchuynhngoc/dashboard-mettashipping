@@ -11,6 +11,7 @@ import TheyChooseUs from "../components/TheyChooseUs";
 import Banner from "../components/Banner";
 import PaymentInfomation from "../components/PaymentInfomation";
 import EmbedLogin from "../components/EmbedLogin";
+import TestimonialForm from "../components/TestimonialForm";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -36,6 +37,8 @@ export function sectionRenderer(section: any, index: number) {
       return <PaymentInfomation key={index} data={section} />;
     case "sections.embed-login":
       return <EmbedLogin key={index} data={section} />;
+    case "sections.testimonial":
+      return <TestimonialForm key={index} data={section} />;
     default:
       return null;
   }
