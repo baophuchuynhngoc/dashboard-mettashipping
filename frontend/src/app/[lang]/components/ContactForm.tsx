@@ -1,15 +1,68 @@
+"use client";
 import Image from "next/image";
-import { getStrapiMedia } from "../utils/api-helpers";
+import { getStrapiMedia, getStrapiURL } from "../utils/api-helpers";
 import HighlightedText from "./HighlightedText";
 import Link from "next/link";
+import { useCallback, useState } from "react";
+const initialData = {
+  
+  email: "",
+  company: "",
+  message: "",
+};
 
 export default function ContactForm({ data }: any) {
+  const [dataContact, setDataContact] = useState(initialData);
   const backgroundImageUrl = getStrapiMedia(
     data?.imgBackground?.data?.attributes?.url
   );
   const pictureUrl = getStrapiMedia(data?.picture?.data?.attributes?.url);
   const phoneUrl = getStrapiMedia("/uploads/Phone.png");
   const envelopUrl = getStrapiMedia("/uploads/Envelope.png");
+  const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
+
+  const changeInput = (e: any) => {
+    const { value, name } = e.target;
+    setDataContact({ ...dataContact, [name]: value });
+  };
+
+  const handleSendMail = useCallback(
+    async (data: any, subject: string, text: string) => {
+      return await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data, subject, text }),
+      });
+    },
+    []
+  );
+
+  async function handleSubmit(e: any) {
+    const {  email, company, message } = dataContact;
+    const emailTemplate = `
+    Hi!
+
+    I'm from ${company} 
+
+    ${message}
+    
+    Looking forward to hearing from you.
+    Thanks!
+    `
+    const res = await fetch(getStrapiURL() + "/api/testimonials", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        data: {  email, company, message },
+      }),
+    });
+    handleSendMail(dataContact, "MettaShipping: You have a new message", emailTemplate);
+  }
   return (
     <section className="container grid lg:grid-cols-3 py-20 gap-10">
       <div
@@ -23,16 +76,20 @@ export default function ContactForm({ data }: any) {
         />
       </div>
       <div className="flex flex-col">
-        <form>
+        <form onSubmit={handleSubmit}>
           <p className="font-light mb-2">Company Name</p>
           <input
             type="text"
+            name="company"
             className="bg-[#FAFBFE] border w-full p-3 rounded-[8px] mb-4"
+            onChange={changeInput}
           />
           <p className="font-light mb-2">Email</p>
           <input
             type="text"
+            name="email"
             className="bg-[#FAFBFE] border w-full p-3 rounded-[8px] mb-4"
+            onChange={changeInput}
           />
           <p className="font-light mb-2">Contact List</p>
           <select className="bg-[#FAFBFE] border w-full p-3 rounded-[8px] mb-4">
@@ -40,8 +97,14 @@ export default function ContactForm({ data }: any) {
             <option value="Export">Export</option>
           </select>
           <p className="font-light mb-2">Message</p>
-          <textarea className="bg-[#FAFBFE] border w-full p-3 rounded-[8px] mb-4" />
-          <button className="bg-primary-blue rounded-[39px] text-white font-bold py-2 px-[33px]">Submit</button>
+          <textarea
+            className="bg-[#FAFBFE] border w-full p-3 rounded-[8px] mb-4"
+            name="message"
+            onChange={changeInput}
+          />
+          <button className="bg-primary-blue rounded-[39px] text-white font-bold py-2 px-[33px]" onClick={handleSubmit}>
+            Submit
+          </button>
         </form>
       </div>
       <div className="flex flex-col gap-11">

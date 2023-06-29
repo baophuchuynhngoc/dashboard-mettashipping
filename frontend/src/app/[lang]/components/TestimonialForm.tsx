@@ -23,18 +23,21 @@ export default function TestimonialForm({ data }: any) {
     setTestimonial({ ...testimonial, [name]: value });
   };
 
-  const handleSendMail = useCallback(async (data: any) => {
+  const handleSendMail = useCallback(async (data: any, subject: string, text: string) => {
     return await fetch("/api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data }),
+      body: JSON.stringify({ data, subject, text }),
     });
   }, []);
 
   async function handleSubmit(e: any) {
     const { name, email, phone, company, message } = testimonial;
+    const emailTemplate = `
+    ${name} have sent you a testimonail
+    `
     const res = await fetch(getStrapiURL() + "/api/testimonials", {
       method: "POST",
       headers: {
@@ -45,7 +48,7 @@ export default function TestimonialForm({ data }: any) {
         data: { name, email, phone, company, message },
       }),
     });
-    handleSendMail(testimonial);
+    handleSendMail(testimonial, "MettaShipping: You have a new message", emailTemplate);
   }
 
   return (
