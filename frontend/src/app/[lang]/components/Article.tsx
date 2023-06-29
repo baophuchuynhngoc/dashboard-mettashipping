@@ -5,6 +5,7 @@ import { fetchAPI } from "../utils/fetch-api";
 import HighlightedText from "./HighlightedText";
 import Loader from "./Loader";
 import { getStrapiMedia } from "../utils/api-helpers";
+import Link from "next/link";
 interface Meta {
   pagination: {
     start: number;
@@ -21,7 +22,7 @@ export default function Article({ data }: ArticleProps) {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [dataFetch, setDataFetch] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
-  const backgroundUrl = getStrapiMedia('/uploads/Eclipse-group.png');
+  const backgroundUrl = getStrapiMedia("/uploads/Eclipse-group.png");
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
     try {
@@ -63,13 +64,21 @@ export default function Article({ data }: ArticleProps) {
 
   if (isLoading) return <Loader />;
   return (
-    <section className="bg-no-repeat bg-[length:640px_640px] py-12" style={{backgroundImage: `url(${backgroundUrl})`,backgroundPosition:"left -22%"}}>
+    <section
+      className="bg-no-repeat bg-[length:640px_640px] py-12"
+      style={{
+        backgroundImage: `url(${backgroundUrl})`,
+        backgroundPosition: "left -22%",
+      }}
+    >
       <div className="text-center mb-[40px]">
-        <HighlightedText
-          text={data.title}
-          tag="h2"
-          className="text-h2 text-primary-blue font-bold leading-none leading-[81.5px] mb-[15px]"
-        />
+        <Link href="/blog">
+          <HighlightedText
+            text={data.title}
+            tag="h2"
+            className="text-h2 text-primary-blue font-bold leading-none leading-[81.5px] mb-[15px]"
+          />
+        </Link>
       </div>
       <Blog data={dataFetch}></Blog>
     </section>

@@ -75,6 +75,7 @@ export default function Profile() {
       <HotTopic data={data} />
       <BlogList data={data} title="Latest News" />
       <BlogList data={data} title="News" />
+      <BlogList data={data} title="Company News" />
       <BlogList data={data} title="Bussiness News" />
     </div>
   );

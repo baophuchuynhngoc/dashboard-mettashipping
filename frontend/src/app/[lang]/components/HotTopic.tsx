@@ -20,12 +20,12 @@ export default function HotTopic({ data }: any) {
           style={{ backgroundImage: `url(${backgroundUrl})` }}
         >
           <div className="pt-[190px] px-[32px]">
-            <p className="text-h2 text-white font-bold ">{title}</p>
-            <p className="font-thin text-white">{formatDate(publishedAt)}</p>
+            <p className="text-h2 text-white font-bold hover:underline hover:cursor-pointer ">{title}</p>
+            <p className="font-thin text-white mb-[30px]">{formatDate(publishedAt)}</p>
           </div>
         </div>
-        <div>
-          <p>{description}</p>
+        <div className="max-h-[358px]">
+          {/* <p>{description}</p> */}
         </div>
       </div>
     </section>

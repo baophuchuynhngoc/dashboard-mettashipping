@@ -13,13 +13,13 @@ export default function ContactForm({ data }: any) {
   return (
     <section className="container grid lg:grid-cols-3 py-20 gap-10">
       <div
-        className="bg-no-repeat bg-center bg-cover rounded-[20px]"
+        className="bg-no-repeat bg-center bg-cover rounded-[20px] relative"
         style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       >
         <HighlightedText
           text={data.title}
           tag="h1"
-          className="lg:text-h2 text-h4 text-white font-bold leading-[54px] pl-[35px] pt-[250px]"
+          className="lg:text-h2 text-h4 text-white font-bold leading-[54px] pl-[35px] py-12 lg:py-0 text-center lg:text-left lg:absolute lg:bottom-10"
         />
       </div>
       <div className="flex flex-col">
@@ -48,7 +48,7 @@ export default function ContactForm({ data }: any) {
         <HighlightedText
           text={data.description}
           tag="p"
-          className=" text-p font-light leading-[24px]"
+          className=" text-p font-light leading-[24px] text-justify"
         />
         <div className="flex flex-row items-center gap-6">
           <Image src={phoneUrl || ""} alt="phone" width={40} height={40} />
