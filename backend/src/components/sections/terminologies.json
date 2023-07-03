@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_terminologies",
+  "info": {
+    "displayName": "Terminologies",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "terminology": {
+      "displayName": "Terminologies",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.terminologies"
+    }
+  }
+}

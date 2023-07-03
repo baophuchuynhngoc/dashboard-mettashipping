@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_elements_terminologies",
+  "info": {
+    "displayName": "Terminologies"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "element": {
+      "type": "richtext"
+    }
+  }
+}

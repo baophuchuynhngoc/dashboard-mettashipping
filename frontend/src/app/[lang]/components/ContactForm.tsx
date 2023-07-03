@@ -5,7 +5,6 @@ import HighlightedText from "./HighlightedText";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 const initialData = {
-  
   email: "",
   company: "",
   message: "",
@@ -38,9 +37,8 @@ export default function ContactForm({ data }: any) {
     },
     []
   );
-
   async function handleSubmit(e: any) {
-    const {  email, company, message } = dataContact;
+    const { email, company, message } = dataContact;
     const emailTemplate = `
     Hi!
 
@@ -50,7 +48,7 @@ export default function ContactForm({ data }: any) {
     
     Looking forward to hearing from you.
     Thanks!
-    `
+    `;
     const res = await fetch(getStrapiURL() + "/api/testimonials", {
       method: "POST",
       headers: {
@@ -58,10 +56,14 @@ export default function ContactForm({ data }: any) {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        data: {  email, company, message },
+        data: { email, company, message },
       }),
     });
-    handleSendMail(dataContact, "MettaShipping: You have a new message", emailTemplate);
+    handleSendMail(
+      dataContact,
+      "MettaShipping: You have a new message",
+      emailTemplate
+    );
   }
   return (
     <section className="container grid lg:grid-cols-3 py-20 gap-10">
@@ -102,7 +104,10 @@ export default function ContactForm({ data }: any) {
             name="message"
             onChange={changeInput}
           />
-          <button className="bg-primary-blue rounded-[39px] text-white font-bold py-2 px-[33px]" onClick={handleSubmit}>
+          <button
+            className="bg-primary-blue rounded-[39px] text-white font-bold py-2 px-[33px]"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </form>
@@ -115,23 +120,39 @@ export default function ContactForm({ data }: any) {
         />
         <div className="flex flex-row items-center gap-6">
           <Image src={phoneUrl || ""} alt="phone" width={40} height={40} />
-          <Link href={`mailto:${data.phone}`}>
-            <HighlightedText
-              text={data.phone}
-              tag="p"
-              className=" text-p text-primary-blue font-bold leading-[24px]"
-            />
-          </Link>
+          <div>
+            {data?.information?.map((item: any, index: number) => {
+              return (
+                <Link href={`tel:${item?.phone}`} key={index}>
+                  <HighlightedText
+                    text={item.phone}
+                    tag="p"
+                    className=" text-p text-primary-blue font-bold leading-[24px]"
+                  />
+                </Link>
+              );
+            })}
+            {data?.information?.map((item: any) => {
+              console.log(item.phone);
+              return <></>;
+            })}
+          </div>
         </div>
         <div className="flex flex-row items-center gap-6">
           <Image src={envelopUrl || ""} alt="phone" width={40} height={40} />
-          <Link href={`mailto:${data.email}`}>
-            <HighlightedText
-              text={data.email}
-              tag="p"
-              className=" text-p text-primary-blue font-bold leading-[24px]"
-            />
-          </Link>
+          <div>
+            {data?.information.map((item: any, index: number) => {
+              return (
+                <Link href={`mailto:${item?.email}`} key={index}>
+                  <HighlightedText
+                    text={item?.email}
+                    tag="p"
+                    className=" text-p text-primary-blue font-bold leading-[24px]"
+                  />
+                </Link>
+              );
+            })}
+          </div>
         </div>
         <Image
           src={pictureUrl || ""}

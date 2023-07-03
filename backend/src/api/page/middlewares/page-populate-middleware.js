@@ -54,6 +54,16 @@ const populate = {
           fields: ["title", "processingTime", "paidFeatures"],
         },
       },
+      information: {
+        populate: {
+          fields: ["phone", "email"],
+        },
+      },
+      terminology: {
+        populate: {
+          fields: ["title", "element"],
+        },
+      },
       paymentMethod: {
         populate: {
           fields: ["title", "description","picture"],

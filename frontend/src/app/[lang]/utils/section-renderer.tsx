@@ -12,6 +12,7 @@ import Banner from "../components/Banner";
 import PaymentInfomation from "../components/PaymentInfomation";
 import EmbedLogin from "../components/EmbedLogin";
 import TestimonialForm from "../components/TestimonialForm";
+import Terminologies from "../components/Terminology";
 
 export function sectionRenderer(section: any, index: number) {
   switch (section.__component) {
@@ -39,6 +40,8 @@ export function sectionRenderer(section: any, index: number) {
       return <EmbedLogin key={index} data={section} />;
     case "sections.testimonial":
       return <TestimonialForm key={index} data={section} />;
+    case "sections.terminologies":
+      return <Terminologies key={index} data={section} />;
     default:
       return null;
   }

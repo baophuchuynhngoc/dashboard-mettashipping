@@ -58,7 +58,8 @@
         "sections.banner",
         "sections.payment-infomation",
         "sections.embed-login",
-        "sections.testimonial"
+        "sections.testimonial",
+        "sections.terminologies"
       ],
       "pluginOptions": {
         "i18n": {
