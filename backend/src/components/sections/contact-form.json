@@ -23,12 +23,6 @@
     "description": {
       "type": "string"
     },
-    "phone": {
-      "type": "string"
-    },
-    "email": {
-      "type": "string"
-    },
     "picture": {
       "type": "media",
       "multiple": false,
@@ -39,6 +33,12 @@
         "videos",
         "audios"
       ]
+    },
+    "information": {
+      "displayName": "contact",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.contact"
     }
   }
 }
