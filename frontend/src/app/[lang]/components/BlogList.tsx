@@ -67,15 +67,15 @@ export default function BlogList({ data, title }: any) {
               .slice(0, process.env.NEXT_PUBLIC_PAGE_LIMIT)
               .map((article: any) => {
                 const imageUrl = getStrapiMedia(
-                  article.attributes.cover.data?.attributes.url
+                  article?.attributes?.cover?.data?.attributes?.url
                 );
 
                 const category = article.attributes.category.data?.attributes;
                 const authorsBio =
-                  article.attributes.authorsBio.data?.attributes;
+                  article?.attributes?.authorsBio?.data?.attributes;
 
                 const avatarUrl = getStrapiMedia(
-                  authorsBio?.avatar.data.attributes.url
+                  authorsBio?.avatar?.data?.attributes?.url
                 );
 
                 return (
@@ -107,14 +107,14 @@ export default function BlogList({ data, title }: any) {
               })
           : data.slice(start, end).map((article: any) => {
               const imageUrl = getStrapiMedia(
-                article.attributes.cover.data?.attributes.url
+                article?.attributes?.cover?.data?.attributes?.url
               );
 
-              const category = article.attributes.category.data?.attributes;
-              const authorsBio = article.attributes.authorsBio.data?.attributes;
+              const category = article?.attributes?.category?.data?.attributes;
+              const authorsBio = article?.attributes?.authorsBio?.data?.attributes;
 
               const avatarUrl = getStrapiMedia(
-                authorsBio?.avatar.data.attributes.url
+                authorsBio?.avatar?.data?.attributes?.url
               );
 
               return (
