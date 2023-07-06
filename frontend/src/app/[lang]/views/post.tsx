@@ -40,11 +40,11 @@ interface Article {
 
 export default function Post({ data }: { data: Article }) {
   const { title, description, publishedAt, cover, authorsBio } =
-    data.attributes;
-  const author = authorsBio.data?.attributes;
-  const imageUrl = getStrapiMedia(cover.data?.attributes.url);
+    data?.attributes;
+  const author = authorsBio?.data?.attributes;
+  const imageUrl = getStrapiMedia(cover?.data?.attributes?.url);
   const authorImgUrl = getStrapiMedia(
-    authorsBio.data?.attributes.avatar.data.attributes.url
+    authorsBio?.data?.attributes?.avatar?.data?.attributes?.url
   );
   const [post, setPost] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
@@ -108,7 +108,7 @@ export default function Post({ data }: { data: Article }) {
                             />
                         )} */}
                 <p className="text-md ">
-                  By {author && author.name} | {formatDate(publishedAt)}
+                  By {author && author?.name} | {formatDate(publishedAt)}
                 </p>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function Post({ data }: { data: Article }) {
           <div className="">
             <p>{description}</p>
 
-            {data.attributes.blocks.map((section: any, index: number) =>
+            {data?.attributes?.blocks?.map((section: any, index: number) =>
               postRenderer(section, index)
             )}
           </div>
@@ -132,8 +132,8 @@ export default function Post({ data }: { data: Article }) {
               );
               return (
                 <Link
-                  href={`blog/${category?.slug}/${item.attributes.slug}`}
-                  key={item.id}
+                  href={`blog/${category?.slug}/${item?.attributes?.slug}`}
+                  key={item?.id}
                   className="bg-white max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
                 >
                   {imgUrl && (
@@ -147,11 +147,11 @@ export default function Post({ data }: { data: Article }) {
                   )}
                   <div className="p-6 space-y-2 relative">
                     <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
-                      {item.attributes.title}
+                      {item?.attributes?.title}
                     </h3>
 
                     <p className="py-4 font-light">
-                      {item.attributes.description}
+                      {item?.attributes?.description}
                     </p>
                   </div>
                 </Link>
@@ -164,14 +164,14 @@ export default function Post({ data }: { data: Article }) {
         <p className="font-bold mb-4">Related News</p>
         <div className="flex flex-row gap-[30px]">
           {post.slice(0, 4).map((item: any, index: any) => {
-            const category = item?.attributes.category.data?.attributes;
+            const category = item?.attributes?.category?.data?.attributes;
             const imgUrl = getStrapiMedia(
-              item?.attributes?.cover?.data?.attributes.url
+              item?.attributes?.cover?.data?.attributes?.url
             );
 
             return (
               <Link
-                href={`blog/${category?.slug}/${item.attributes.slug}`}
+                href={`blog/${category?.slug}/${item?.attributes?.slug}`}
                 key={item.id}
                 className="mx-auto group hover:no-underline focus:no-underline  rounded-[8px] overflow-hidden flex-1"
               >
@@ -186,7 +186,7 @@ export default function Post({ data }: { data: Article }) {
                 )}
                 <div className="pt-[16px] relative">
                   <h3 className="text-xl font-semibold group-hover:underline group-focus:underline">
-                    {item.attributes.title}
+                    {item?.attributes?.title}
                   </h3>
 
                   {/* <p className="py-4 font-light">
