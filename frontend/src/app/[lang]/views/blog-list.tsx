@@ -55,20 +55,20 @@ export default function PostList({
       <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.slice(0,6).map((article) => {
           const imageUrl = getStrapiMedia(
-            article?.attributes?.cover?.data?.attributes?.url
+            article.attributes.cover.data?.attributes.url
           );
 
-          const category = article?.attributes?.category?.data?.attributes;
-          const authorsBio = article?.attributes?.authorsBio¿.data?.attributes;
+          const category = article.attributes.category.data?.attributes;
+          const authorsBio = article.attributes.authorsBio.data?.attributes;
 
           const avatarUrl = getStrapiMedia(
-            authorsBio?.avatar?.data?.attributes?.url
+            authorsBio?.avatar.data.attributes.url
           );
 
           return (
             <Link
-              href={`blog/${category?.slug}/${article?.attributes?.slug}`}
-              key={article?.id}
+              href={`blog/${category?.slug}/${article.attributes.slug}`}
+              key={article.id}
               className="bg-white max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
             >
               {imageUrl && (
@@ -83,10 +83,10 @@ export default function PostList({
               <div className="p-6 space-y-2 relative">
 
                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
-                  {article?.attributes?.title}
+                  {article.attributes.title}
                 </h3>
 
-                <p className="py-4 font-light">{article?.attributes?.description}</p>
+                <p className="py-4 font-light">{article.attributes.description}</p>
               </div>
             </Link>
           );
