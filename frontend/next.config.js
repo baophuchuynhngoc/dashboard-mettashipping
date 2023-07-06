@@ -7,9 +7,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
+        protocol: 'https',
+        hostname: 'metta-shipping-780aae1f73e1.herokuapp.com',
+        port: '80',
         pathname: '/uploads/**',
       },
       {
