@@ -85,7 +85,7 @@ export default function BlogList({ data, title }: any) {
                     className="mx-auto group hover:no-underline focus:no-underline  rounded-[8px] overflow-hidden flex-1"
                   >
                     {imageUrl && (
-                      <Image
+                      <img
                         alt="presentation"
                         width="371"
                         height="200"
@@ -111,7 +111,8 @@ export default function BlogList({ data, title }: any) {
               );
 
               const category = article?.attributes?.category?.data?.attributes;
-              const authorsBio = article?.attributes?.authorsBio?.data?.attributes;
+              const authorsBio =
+                article?.attributes?.authorsBio?.data?.attributes;
 
               const avatarUrl = getStrapiMedia(
                 authorsBio?.avatar?.data?.attributes?.url
@@ -124,7 +125,7 @@ export default function BlogList({ data, title }: any) {
                   className="mx-auto group hover:no-underline focus:no-underline  rounded-[8px] overflow-hidden flex-1"
                 >
                   {imageUrl && (
-                    <Image
+                    <img
                       alt="presentation"
                       width="371"
                       height="200"

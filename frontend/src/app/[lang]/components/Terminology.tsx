@@ -29,14 +29,14 @@ export default function Terminologies({ data }: any) {
                   {item?.title}
                   <span className="inline-flex float-right">
                     {currentId !== item.id ? (
-                      <Image
+                      <img
                         src={caretDown || ""}
                         alt="caret-down"
                         width={20}
                         height={20}
                       />
                     ) : (
-                      <Image
+                      <img
                         src={caretUp || ""}
                         alt="caret-up"
                         width={20}
