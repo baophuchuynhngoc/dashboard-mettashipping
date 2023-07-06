@@ -72,7 +72,7 @@ export default function PostList({
               className="bg-white max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
             >
               {imageUrl && (
-                <Image
+                <img
                   alt="presentation"
                   width="371"
                   height="200"

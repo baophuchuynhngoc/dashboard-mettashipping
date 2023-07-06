@@ -85,7 +85,7 @@ export default function Post({ data }: { data: Article }) {
   return (
     <article className="space-y-8 ">
       {/* {imageUrl && (
-        <Image
+        <img
           src={imageUrl}
           alt="article cover image"
           width={400}
@@ -99,7 +99,7 @@ export default function Post({ data }: { data: Article }) {
             <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center ">
               <div className="flex items-center md:space-x-2">
                 {/* {authorImgUrl && (
-                            <Image
+                            <img
                                 src={authorImgUrl}
                                 alt="article cover image"
                                 width={400}
@@ -137,7 +137,7 @@ export default function Post({ data }: { data: Article }) {
                   className="bg-white max-w-sm mx-auto group hover:no-underline focus:no-underline lg:w-[300px] xl:min-w-[375px] rounded-[8px] overflow-hidden shadow-lg flex-1"
                 >
                   {imgUrl && (
-                    <Image
+                    <img
                       alt="presentation"
                       width="371"
                       height="200"
@@ -176,7 +176,7 @@ export default function Post({ data }: { data: Article }) {
                 className="mx-auto group hover:no-underline focus:no-underline  rounded-[8px] overflow-hidden flex-1"
               >
                 {imgUrl && (
-                  <Image
+                  <img
                     alt="presentation"
                     width="371"
                     height="200"

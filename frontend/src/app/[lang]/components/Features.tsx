@@ -82,7 +82,7 @@ function Feature({
             </div>
           </div>
           <div className="flex-1 relative">
-            <Image
+            <img
               src={imgUrl || ""}
               alt=""
               width="588"
@@ -90,7 +90,7 @@ function Feature({
               className="w-full aspect-[7/4] rounded-[12px] "
             />
             {0 === Number(index) && (
-              <Image
+              <img
                 src={iconUrl || ""}
                 alt=""
                 width={101}
@@ -99,7 +99,7 @@ function Feature({
               />
             )}
             {1 === Number(index) && (
-              <Image
+              <img
                 src={iconUrl || ""}
                 alt=""
                 width={101}
@@ -108,7 +108,7 @@ function Feature({
               />
             )}
             {2 === Number(index) && (
-              <Image
+              <img
                 src={iconUrl || ""}
                 alt=""
                 width={101}
@@ -117,7 +117,7 @@ function Feature({
               />
             )}
             {3 === Number(index) && (
-              <Image
+              <img
                 src={iconUrl || ""}
                 alt=""
                 width={101}
@@ -129,7 +129,7 @@ function Feature({
         </div>
       ) : (
         <div className="flex flex-col p-6 text-center bg-white flex-1 rounded-[8px] shadow">
-          <Image
+          <img
             src={iconUrl || ""}
             alt=""
             width={101}

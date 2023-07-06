@@ -36,7 +36,7 @@ export default function BlogList({ data, title }: any) {
             className="text-h2 font-bold leading-none leading-[81.5px] mb-[15px]"
           />
           <div className="flex flex-row">
-            <Image
+            <img
               src={prevArrow || ""}
               alt="next-arrow"
               width={62}
@@ -44,7 +44,7 @@ export default function BlogList({ data, title }: any) {
               onClick={previous}
               className="cursor-pointer"
             />
-            <Image
+            <img
               src={nextArrow || ""}
               alt="next-arrow"
               width={62}

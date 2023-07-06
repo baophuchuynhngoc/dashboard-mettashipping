@@ -94,7 +94,7 @@ export default function Introduce({ data }: IntroduceProps) {
               <ul className={`list-image-none font-bold text-justify lg:w-2/3`}>
                 {data.paragraph.map((para, index) => (
                   <li key={index} className="mb-[20px] flex">
-                    <Image
+                    <img
                       src={tickIconUrl || ""}
                       alt=""
                       width={25}
@@ -110,7 +110,7 @@ export default function Introduce({ data }: IntroduceProps) {
           <div className="relative">
             {path === "/en" ? (
               <>
-                <Image
+                <img
                   src={imgUrl || ""}
                   alt=""
                   width={729}
@@ -148,7 +148,7 @@ export default function Introduce({ data }: IntroduceProps) {
               </>
             )}
             {iconUrl && (
-              <Image
+              <img
                 src={iconUrl || ""}
                 alt=""
                 width={101}

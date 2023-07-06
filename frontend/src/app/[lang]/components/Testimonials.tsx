@@ -100,7 +100,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
     >
       <div className="container p-0 relative">
         <div className="absolute top-[45%] hidden lg:flex flex-row z-10 justify-between w-full">
-          <Image
+          <img
             src={prevArrow || ""}
             alt="next-arrow"
             width={62}
@@ -108,7 +108,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
             onClick={previous}
             className="cursor-pointer"
           />
-          <Image
+          <img
             src={nextArrow || ""}
             alt="next-arrow"
             width={62}
@@ -129,7 +129,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
                 <div className="m:py-12 lg:py-24">
                   <div className="mb-[16px] mx-auto w-fit">
                     {imageUrl ? (
-                      <Image
+                      <img
                         src={imageUrl || ""}
                         alt={""}
                         className="inline-block object-cover rounded-full "
@@ -150,7 +150,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
                       </p>
                       <div className="flex items-center justify-center">
                         {Array.from(Array(5), (_, index) => (
-                          <Image
+                          <img
                             src={star || ""}
                             alt="star"
                             width={16}
@@ -164,7 +164,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
 
                     <div className=" text-center">
                       <div className="bg-[#F6FCFF] rounded-[40px] relative lg:w-3/4 mx-auto">
-                        <Image
+                        <img
                           src={iconUrl || ""}
                           alt="quotes"
                           width={80}

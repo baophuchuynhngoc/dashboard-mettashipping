@@ -119,7 +119,7 @@ export default function ContactForm({ data }: any) {
           className=" text-p font-light leading-[24px] text-justify"
         />
         <div className="flex flex-row items-center gap-6">
-          <Image src={phoneUrl || ""} alt="phone" width={40} height={40} />
+          <img src={phoneUrl || ""} alt="phone" width={40} height={40} />
           <div>
             {data?.information?.map((item: any, index: number) => {
               return (
@@ -139,7 +139,7 @@ export default function ContactForm({ data }: any) {
           </div>
         </div>
         <div className="flex flex-row items-center gap-6">
-          <Image src={envelopUrl || ""} alt="phone" width={40} height={40} />
+          <img src={envelopUrl || ""} alt="phone" width={40} height={40} />
           <div>
             {data?.information.map((item: any, index: number) => {
               return (
@@ -154,7 +154,7 @@ export default function ContactForm({ data }: any) {
             })}
           </div>
         </div>
-        <Image
+        <img
           src={pictureUrl || ""}
           alt="mapwithpin"
           width={337}

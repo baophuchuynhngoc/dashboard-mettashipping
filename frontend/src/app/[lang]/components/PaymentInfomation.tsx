@@ -52,7 +52,7 @@ export default function PaymentInfomation({ data }: any) {
             <li className="border rounded-[20px] font-semibold py-[15px] px-[24px] uppercase text-primary-blue mb-4 list-disc list-inside items-baseline">
               {item?.title}{" "}
               <span className="inline-flex float-right">
-                <Image
+                <img
                   src={caretDown || ""}
                   alt="caret-down"
                   width={20}
@@ -72,7 +72,7 @@ export default function PaymentInfomation({ data }: any) {
             return (
               <>
                 {paymentMethodUrl && (
-                  <Image
+                  <img
                     src={paymentMethodUrl || ""}
                     alt="pay-method"
                     width={108}
@@ -83,7 +83,7 @@ export default function PaymentInfomation({ data }: any) {
             );
           })}
         </div>
-        <Image src={imgBackgroundUrl || ""} alt="" width={330} height={268} className="mx-auto" />
+        <img src={imgBackgroundUrl || ""} alt="" width={330} height={268} className="mx-auto" />
       </div>
     </section>
   );

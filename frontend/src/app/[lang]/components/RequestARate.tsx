@@ -201,7 +201,7 @@ export default function RequestARate({ data }: any) {
           className="lg:text-3xl text-xl text-white font-bold leading-[54px] pl-[35px] pt-[48px]"
         />
         <div className="hidden lg:block">
-          <Image
+          <img
             src={iconUrl || ""}
             alt="icon"
             width={102}

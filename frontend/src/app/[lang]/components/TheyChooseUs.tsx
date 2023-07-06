@@ -9,7 +9,7 @@ export default function TheyChooseUs({ data }: any) {
     <section className="m:py-12 lg:py-24">
       <div className="grid lg:grid-cols-2">
         <div>
-          <Image src={pictureUrl || ""} alt="" width={710} height={508} />
+          <img src={pictureUrl || ""} alt="" width={710} height={508} />
         </div>
         <div className="container py-6 lg:py-0">
           <HighlightedText
@@ -22,7 +22,7 @@ export default function TheyChooseUs({ data }: any) {
             tag="p"
             className="text-para mb-[15px]"
           />
-          <Image src={imgBackgroundUrl || ""} alt="" width={406} height={305} />
+          <img src={imgBackgroundUrl || ""} alt="" width={406} height={305} />
         </div>
       </div>
     </section>

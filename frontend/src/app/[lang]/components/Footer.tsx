@@ -138,7 +138,7 @@ export default function Footer({
                     target={link.newTab ? "_blank" : "_self"}
                     className="flex items-center justify-center w-10 h-10 rounded-full object-cover"
                   >
-                    <Image
+                    <img
                       src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${link.socialIcon?.data?.attributes.url}`}
                       width={30}
                       height={30}
