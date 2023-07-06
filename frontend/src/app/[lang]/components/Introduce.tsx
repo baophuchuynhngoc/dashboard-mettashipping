@@ -128,7 +128,7 @@ export default function Introduce({ data }: IntroduceProps) {
               </>
             ) : (
               <>
-              <Image
+              <img
                   src={imgUrl || ""}
                   alt=""
                   width={729}
