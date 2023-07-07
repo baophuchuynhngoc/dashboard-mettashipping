@@ -48,7 +48,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const iconUrl = getStrapiMedia(data.icon.data.attributes.url);
   const nextArrow = getStrapiMedia("/uploads/next-arrow.png");
   const prevArrow = getStrapiMedia("/uploads/prev-arrow.png");
-  const star = getStrapiMedia("/uploads/star.png");
+  const star = getStrapiMedia("/uploads/start_847b34657c.png");
   const backgroundImage = getStrapiMedia("/uploads/Eclipse.png");
 
   const next = () => {
