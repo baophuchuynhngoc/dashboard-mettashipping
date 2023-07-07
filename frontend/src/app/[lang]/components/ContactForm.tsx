@@ -16,8 +16,8 @@ export default function ContactForm({ data }: any) {
     data?.imgBackground?.data?.attributes?.url
   );
   const pictureUrl = getStrapiMedia(data?.picture?.data?.attributes?.url);
-  const phoneUrl = getStrapiMedia("/uploads/Phone.png");
-  const envelopUrl = getStrapiMedia("/uploads/Envelope.png");
+  const phoneUrl = getStrapiMedia("/uploads/Phone_77d4d0de51.png");
+  const envelopUrl = getStrapiMedia("/uploads/Envelope_ba41de3cec.png");
   const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
 
   const changeInput = (e: any) => {
