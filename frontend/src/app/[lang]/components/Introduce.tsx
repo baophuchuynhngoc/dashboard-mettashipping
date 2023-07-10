@@ -49,7 +49,7 @@ export default function Introduce({ data }: IntroduceProps) {
     data?.imgBackground?.data?.attributes.url
   );
   const iconUrl = getStrapiMedia(data?.icon?.data?.attributes.url);
-  const tickIconUrl = getStrapiMedia("/uploads/tick.png");
+  const tickIconUrl = getStrapiMedia("/uploads/tick_85f589120b.png");
   const path = usePathname();
   return (
     <section className="relative mb-[80px]">
